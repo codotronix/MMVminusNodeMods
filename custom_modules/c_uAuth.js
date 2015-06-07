@@ -1,7 +1,6 @@
 var MongoClient = require('mongodb').MongoClient;
 
 var custom_uAuth = {};
-//var mongoDbPath = 'mongodb://codotronix:24292392@ds043972.mongolab.com:43972/i1users';
 var mongoDbPath = 'mongodb://127.0.0.1:27017/test';
 
 /************* CREATE A TEMPORARY USER IN THE DB ******************/
