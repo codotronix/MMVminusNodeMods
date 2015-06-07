@@ -1,0 +1,181 @@
+ul {
+	padding-left: 0; /*Bootstrap always gives padding left 40px*/
+	margin-bottom: 0;
+}
+
+ul li {
+	list-style: none;
+}
+
+.mask {
+	display: none;
+	position: fixed;
+	height: 100%;
+	width: 100%;
+	opacity: .7;
+	background: black;
+	z-index: 99;
+	text-align: center;
+}
+
+.label {
+	white-space: normal;
+}
+
+.mask #msg {
+	font-size: 30px;
+	color: white;
+}
+
+.customJumbo {
+	margin-bottom: 25px;
+  	background: #0082ff;
+  	padding: 0 10px 10px 10px;
+}
+
+.customJumbo label {
+	display: block;
+	color: #fff;
+	text-align: center;
+	margin-bottom: 0;
+}
+
+.customJumbo .sitename {
+	font-weight: bold;  	
+  	background: #0082ff;  	
+  	font-size: 80px;
+}
+
+.customJumbo .tagLine {
+	font-size: 18px;
+}
+
+.headContainer {
+	position: fixed;
+	width: 100%;
+	z-index: 1;
+	background: #FFF;
+}
+
+header {
+	border-bottom: 1px solid #CCC;
+	padding-bottom: 25px;
+}
+
+#topNav {
+	width: 100%;
+	display: table;
+}
+
+#topNav li {
+	text-align: center;
+	display: table-cell;
+}
+
+.bodyContainer {
+	margin-top: 234px;
+	background: #EEE;
+}
+
+.leftContainer {
+	padding: 10px 0;
+	text-align: center;
+	background: #EEE;
+	position: fixed;
+}
+
+#leftNav li {
+	margin-top: 7px;
+}
+
+.centerContainer {
+	padding-top: 15px; 
+	background: #FFF;
+}
+
+.itemExtContainer {
+	padding: 5px;
+}
+
+.itemContainer {
+	border: 1px solid #CCC;
+	height: 100px;
+}
+
+footer {
+	text-align: center;
+	margin: 20px 0 0 0;
+}
+
+.error {
+	border-color: red;
+}
+
+.error-icon {
+	display: none;
+	background: url("../images/error.png") no-repeat 0 0;	
+	width: 21px;
+	height: 21px;
+	position: absolute;
+	right: 20px;
+	top: 6px;
+}
+
+/*** login page specific styles ***/
+.loginPage form {
+	padding: 10px 30px 30px;
+}
+
+.loginPage form div {
+	margin-top: 15px;
+}
+
+.loginPage #topNav {
+	display: none;
+}
+
+.loginPage header {
+	border-bottom: none;
+	padding-bottom: 0;
+}
+
+.loginPage .bodyContainer {
+	margin-top: 174px;
+}
+
+.statusMsg label{
+	padding: 10px;
+	display: block;
+	font-size: 18px;
+	display: none;
+}
+
+/************ MEDIA QUERIES ***********/
+
+@media screen and (max-width: 767px) {
+	.customJumbo .sitename {
+		font-size: 45px;
+	}
+
+	.customJumbo .tagLine {
+		font-size: 16px;
+	}
+
+	.bodyContainer {
+		margin-top: 191px;
+	}
+
+	.loginPage .bodyContainer {
+		margin-top: 131px;
+	}
+
+	.loginPage form {
+		padding: 10px 10px 20px 10px;
+	}
+
+	.loginPage form label {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+}
+

@@ -1,0 +1,62 @@
+<!-- **********Login Section********** -->
+<form id="signUpForm" class="col-sm-6 col-xs-12 regForm" method="POST" action="/signup">
+	<h2 class="col-md-12">
+		Welcome to ISLAND
+	</h2>
+	<h4 class="col-md-12">
+		Sign Up to enter 
+	</h4>
+	<div class="col-md-12 statusMsg">
+		<label class="label label-success">Signup successful. Please check your email...</label>
+		<label class="label label-danger">Email Already Exists</label>
+	</div>
+	<div class="col-md-6">
+		<input class="form-control required" type="text" id="firstName" name="firstName" placeholder="First name"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-6">
+		<input class="form-control required" type="text" id="lastName" name="lastName" placeholder="Last name"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-12">
+		<input class="form-control required" type="text" id="chosenEmail" name="chosenEmail" placeholder="Choose an username"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-12">
+		<input class="form-control required" type="password" id="chosenPswd" name="chosenPswd" placeholder="Choose a password"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-12">
+		<input class="form-control required" type="password" id="reChosenPswd" name="reChosenPswd" placeholder="Re-enter the password"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-12">
+		<label class="col-xs-4"><input type="radio" name="gender" value="M"checked="checked"> Male</label>
+		<label class="col-xs-4"><input type="radio" name="gender" value="F"> Female</label>
+		<label class="col-xs-4"><input type="radio" name="gender" value="O"> Other</label>
+	</div>
+	<div class="col-md-12">
+		<input type="submit" class="btn btn-primary btn-lg btn-block" id="signup" value="Sign Up"/>
+	</div>
+</form>
+
+<!-- *******Register Section*********** -->
+<form class="col-sm-6 col-xs-12 loginForm">
+	<h2 class="col-md-12">
+		Already on ISLAND?
+	</h2>
+	<h4 class="col-md-12">
+		Please Sign In 
+	</h4>
+	<div class="col-md-12">
+		<input class="form-control required" type="text" id="userName" name="userName" placeholder="Enter username"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-12">
+		<input class="form-control required" type="password" id="pswd" name="pswd" placeholder="Enter password"/>
+		<span class="error-icon"></span>
+	</div>
+	<div class="col-md-12">
+		<input type="submit" class="btn btn-success btn-lg btn-block" id="signin" value="Sign In"/>
+	</div>
+</form>
