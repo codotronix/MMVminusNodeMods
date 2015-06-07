@@ -1,8 +1,12 @@
 $(function () {
+
+/***** SUBMIT BUTTON CLICK VALIDATION *****/
 	$('body').on('click submit', 'input[type="submit"]', function (e) {		
+		var jqFormObj = $(this).closest('form');
 		e.preventDefault();
 		var hasError = false;
-		$(this).closest('form').find('.required').each(function(){
+		//check all required fields
+		jqFormObj.find('.required').each(function(){
 			if($(this).val().trim().length == 0) {
 				$(this).addClass('error');
 				$(this).next('.error-icon').show();
@@ -10,22 +14,25 @@ $(function () {
 				e.preventDefault();
 			}
 		});
-
-		if(!hasError) {
+		validateEmail(jqFormObj);
+		//confirm that the form has no error
+		if(!hasError && jqFormObj.find('.error').length == 0) {
 			//no error, so time to ajax call
 			$('.mask #msg').text('Please Wait...');
 			$('.mask').show();
 
 			var formID = $(this).closest('form').attr('id');
-			//console.log(formID);
+			
 			//if it is signup form, call function doSignUp() 
 			if(formID == 'signUpForm') {
 				doSignUp('signUpForm');
 			}			
 		}
 	});
+///////////////////////////////////////////////////////////////
 
-	$('body').on('keyup blur', 'input.required', function () {
+/***************** REQUIRED FIELDS VALIDATIONS *****************/
+	$('body').on('keyup blur', '.required', function () {
 		if($(this).val().trim().length == 0) {
 			$(this).addClass('error');
 			$(this).next('.error-icon').show();
@@ -34,15 +41,45 @@ $(function () {
 			$(this).next('.error-icon').hide();
 		}
 	});
+///////////////////////////////////////////////////////////////
+	
+/************** REPASSWORD VALIDATION ************************/
+	/*assumes that form has only 2 input[type="password"], first one
+	having .password class and 2nd one having .repassword class*/
+	$('body').on('keyup blur', '.repassword', function () {
+		if($(this).val() != $(this).closest('form').find('.password').val()) {
+			$(this).addClass('error');
+			$(this).next('.error-icon').show();
+		} else {
+			$(this).removeClass('error');
+			$(this).next('.error-icon').hide();
+		}
+	});
+///////////////////////////////////////////////////////////////
 
-	/******** ALL FUNCTIONS ********************/
+/****************** EMAIL VALIDATION ************************/
+	function validateEmail (jqFormObj) {
+		jqFormObj.find('.email').each(function(){
+			var value = $(this).val();
+			if(/^[a-z._-]{1,}@[A-Z_-]{1,}[.]{1}[A-Z._-]{1,}$/gi.test(value)) {
+				$(this).removeClass('error');
+				$(this).next('.error-icon').hide();
+			} else {
+				$(this).addClass('error');
+				$(this).next('.error-icon').show();
+			}
+
+		});
+	}
+//////////////////////////////////////////////////////////////
+
+/******************* ALL FUNCTIONS ***************************/
 
 	//SignUp Entry point when all form fields are ok
 	function doSignUp(formID) {
 		var dataObj = makeDataObj(formID);
-		dataObj["_id"] = dataObj["chosenEmail"];
-		//console.log('logging dataObj');
-		//console.log(dataObj);
+		dataObj["chosenEmail"] = dataObj["chosenEmail"].toLowerCase();
+		dataObj["_id"] = dataObj["chosenEmail"];		
 
 		//ajax post
 		var ajaxObj = {};
@@ -56,7 +93,7 @@ $(function () {
 
 			if(data.status == 'insert_success') {
 				$('#'+ formID + ' .statusMsg .label').hide();
-				$('#'+ formID + ' .label-success').show();
+				$('#'+ formID + ' .label-success').show();				
 			} else {
 				$('#'+ formID + ' .statusMsg .label').hide();
 				$('#'+ formID + ' .label-danger').show();
